@@ -1,4 +1,4 @@
-import { Box, Container, Fab, Modal, TextField, Tooltip } from "@mui/material"
+import { Box, Button, Container, Fab, FormControl, FormControlLabel, FormLabel, InputLabel, MenuItem, Modal, Radio, RadioGroup, Select, TextField, Tooltip } from "@mui/material"
 import AddIcon from '@mui/icons-material/Add'
 import { styled } from "@mui/system"
 import { useState } from "react"
@@ -28,8 +28,8 @@ const StyledContainer = styled(Container)(({ theme }) => ({
   }
 }))
 
-const StyledForm = styled(Box)(({ theme }) => ({
-
+const StyledItem = styled(Box)(({ theme }) => ({
+  marginBottom: 20,
 }))
 
 const Add = () => {
@@ -44,9 +44,75 @@ const Add = () => {
 
     <Modal open={open}>
       <StyledContainer>
-        <StyledForm>
-          <TextField id="standard-basic" label="Standard" variant="standard" />
-        </StyledForm>
+        <form autoComplete="off">
+          <StyledItem>
+            <TextField
+              id="standard-basic"
+              label="Title"
+              variant="standard"
+              size="small"
+              sx={{ width: "100%" }}
+            />
+          </StyledItem>
+
+          <StyledItem>
+            <TextField
+              id="outlined-basic"
+              label="Description"
+              variant="outlined"
+              defaultValue="Tell your story..."
+              multiline
+              rows={3}
+              size="small"
+              sx={{ width: "100%" }}
+            />
+          </StyledItem>
+
+          <FormControl variant="standard" sx={{ marginBottom: 2, minWidth: 100 }}>
+            <InputLabel id="demo-simple-select-standard-label">Public</InputLabel>
+            <Select
+              labelId="demo-simple-select-standard-label"
+              id="demo-simple-select-standard"
+              label="Public"
+            >
+              <MenuItem value="Public">Public</MenuItem>
+              <MenuItem value="Private">Private</MenuItem>
+              <MenuItem value="Unlisted">Unlisted</MenuItem>
+            </Select>
+          </FormControl>
+
+          <StyledItem>
+            <FormLabel components="legend">Who can comment?</FormLabel>
+            <RadioGroup>
+              <FormControlLabel
+                value="Everybody"
+                control={<Radio size="small" />}
+                label="Everybody"
+              />
+              <FormControlLabel
+                value="My Friends"
+                control={<Radio size="small" />}
+                label="My Friends"
+              />
+              <FormControlLabel
+                value="Nobody"
+                control={<Radio size="small" />}
+                label="Nobody"
+              />
+              <FormControlLabel
+                value="Custom"
+                disabled
+                control={<Radio size="small" />}
+                label="Custom (Premium)"
+              />
+            </RadioGroup>
+          </StyledItem>
+
+          <StyledItem>
+            <Button variant="outlined" color="primary" sx={{marginRight: 2}}>Create</Button>
+            <Button variant="outlined" color="error">Cancel</Button>
+          </StyledItem>
+        </form>
       </StyledContainer>
     </Modal>
   </>
