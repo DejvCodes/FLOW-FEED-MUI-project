@@ -1,4 +1,4 @@
-import { Box, Button, Container, Fab, FormControl, FormControlLabel, FormLabel, InputLabel, MenuItem, Modal, Radio, RadioGroup, Select, TextField, Tooltip } from "@mui/material"
+import { Alert, Box, Button, Container, Fab, FormControl, FormControlLabel, FormLabel, InputLabel, MenuItem, Modal, Radio, RadioGroup, Select, Snackbar, TextField, Tooltip } from "@mui/material"
 import AddIcon from '@mui/icons-material/Add'
 import { styled } from "@mui/system"
 import { useState } from "react"
@@ -34,6 +34,14 @@ const StyledItem = styled(Box)(({ theme }) => ({
 
 const Add = () => {
   const [open, setOpen] = useState(false)
+  const [openAlert, setOpenAlert] = useState(false)
+
+  const handleOpen = () => {
+    setOpenAlert(true)
+  }
+  const handleClose = () => {
+    setOpenAlert(false)
+  }
 
   return <>
     <Tooltip title="Add" aria-label="add" onClick={() => setOpen(true)}>
@@ -109,12 +117,37 @@ const Add = () => {
           </StyledItem>
 
           <StyledItem>
-            <Button variant="outlined" color="primary" sx={{marginRight: 2}}>Create</Button>
-            <Button variant="outlined" color="error">Cancel</Button>
-          </StyledItem> 
+            <Button
+              variant="outlined"
+              color="primary"
+              sx={{ marginRight: 2 }}
+              onClick={handleOpen}
+            >
+              Create
+            </Button>
+            <Button
+              variant="outlined"
+              color="error"
+              onClick={() => setOpen(false)}
+            >
+              Cancel
+            </Button>
+          </StyledItem>
         </form>
       </StyledContainer>
     </Modal>
+
+
+    <Snackbar open={openAlert} autoHideDuration={6000} onClose={handleClose}>
+      <Alert
+        onClose={handleClose}
+        severity="success"
+        variant="filled"
+        sx={{ width: '100%' }}
+      >
+        The post was successfully created!
+      </Alert>
+    </Snackbar>
   </>
 }
 
