@@ -111,7 +111,7 @@ const Add = () => {
           <StyledItem>
             <Button variant="outlined" color="primary" sx={{marginRight: 2}}>Create</Button>
             <Button variant="outlined" color="error">Cancel</Button>
-          </StyledItem>
+          </StyledItem> 
         </form>
       </StyledContainer>
     </Modal>
