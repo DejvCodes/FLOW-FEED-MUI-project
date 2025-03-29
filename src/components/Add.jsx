@@ -147,7 +147,7 @@ const Add = () => {
       >
         The post was successfully created!
       </Alert>
-    </Snackbar>
+    </Snackbar> 
   </>
 }
 
