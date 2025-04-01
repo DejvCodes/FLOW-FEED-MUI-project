@@ -4,18 +4,17 @@ import { styled } from "@mui/system"
 import avatar from "../images/Navbar/avatar.webp"
 import { useState } from "react"
 
-const StyledToolBar = styled(Toolbar)({
+
+const StyledToolBar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
   color: "white",
-  backgroundColor: "#0082FF",
+  backgroundColor: theme.palette.mode === "dark" ? "#333" : "#0082FF",
   paddingInline: 7,
   boxShadow: "0 5px 4px rgba(0, 0, 0, 0.15)",
-})
+}))
 
-const StyledSearchBox = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
+const StyledSearchBox = styled(Box)(({ theme, open }) => ({
   width: "55%",
   display: "flex",
   alignItems: "center",
@@ -46,9 +45,7 @@ const StyledCancelButton = styled(Cancel)(({ theme }) => ({
   },
 }))
 
-const StyledIconBox = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
+const StyledIconBox = styled(Box)(({ theme, open }) => ({
   display: "flex",
   alignItems: "center",
   gap: 11,
@@ -57,9 +54,7 @@ const StyledIconBox = styled(Box, {
   },
 }))
 
-const StyledSearchButton = styled(Search, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
+const StyledSearchButton = styled(Search)(({ theme, open }) => ({
   fontSize: "26px",
   [theme.breakpoints.up("sm")]: {
     display: open ? "block" : "none",
@@ -72,9 +67,7 @@ const NavBar = () => {
   return <>
     <AppBar position="fixed">
       <StyledToolBar>
-        <Typography variant="h5">
-          FLOW FEED
-        </Typography>
+        <Typography variant="h5">FLOW FEED</Typography>
 
         <StyledSearchBox open={open}>
           <Search sx={{ fontSize: "26px", cursor: "pointer" }} />
