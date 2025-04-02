@@ -3,16 +3,16 @@ import AddIcon from '@mui/icons-material/Add'
 import { styled } from "@mui/system"
 import { useState } from "react"
 
-const StyledFab = styled(Fab)({
+const StyledFab = styled(Fab)(({ theme }) => ({
   position: "fixed",
   bottom: 10,
   right: 10,
   color: "white",
-  backgroundColor: "#0082FF",
+  backgroundColor: theme.palette.mode === "dark" ? "#555" : "#0082FF",
   "&:hover": {
-    backgroundColor: "#004AB5",
+    backgroundColor: theme.palette.mode === "dark" ? "#777" : "#004AB5",
   }
-})
+}))
 
 const StyledContainer = styled(Container)(({ theme }) => ({
   position: "absolute",
@@ -21,7 +21,7 @@ const StyledContainer = styled(Container)(({ theme }) => ({
   transform: "translate(-50%, -50%)",
   width: 500,
   height: 500,
-  backgroundColor: "white",
+  backgroundColor: theme.palette.mode === "dark" ? "#222" : "#fff",
   [theme.breakpoints.down("sm")]: {
     width: "100vw",
     height: "100vh",

@@ -4,14 +4,13 @@ import { styled } from "@mui/system"
 import avatar from "../images/Navbar/avatar.webp"
 import { useState } from "react"
 
-
 const StyledToolBar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
   color: "white",
-  backgroundColor: theme.palette.mode === "dark" ? "#333" : "#0082FF",
+  backgroundColor: theme.palette.mode === "dark" ? "#222" : "#0082FF",
   paddingInline: 7,
-  boxShadow: "0 5px 4px rgba(0, 0, 0, 0.15)",
+  boxShadow: "0 5px 4px rgba(0, 0, 0, 0.2)",
 }))
 
 const StyledSearchBox = styled(Box)(({ theme, open }) => ({
