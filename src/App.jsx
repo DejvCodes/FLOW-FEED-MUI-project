@@ -14,7 +14,7 @@ export const DarkModeContext = createContext()
 const App = () => {
   const [darkMode, setDarkMode] = useState(false)
 
-  const theme = createTheme({
+  const theme = createTheme({ 
     palette: {
       mode: darkMode ? "dark" : "light",
     },
