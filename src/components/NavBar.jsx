@@ -18,7 +18,7 @@ const StyledSearchBox = styled(Box)(({ theme, open }) => ({
   display: "flex",
   alignItems: "center",
   backgroundColor: "rgba(255, 255, 255, 0.35)",
-  transition: "all 0.1s linear",
+  transition: "width 0.1s ease",
   padding: "3px 7px",
   borderRadius: "5px",
   "&:hover": {
@@ -42,6 +42,7 @@ const StyledCancelButton = styled(Cancel)(({ theme }) => ({
   [theme.breakpoints.up("sm")]: {
     display: "none",
   },
+  cursor: "pointer",
 }))
 
 const StyledIconBox = styled(Box)(({ theme, open }) => ({
@@ -58,37 +59,36 @@ const StyledSearchButton = styled(Search)(({ theme, open }) => ({
   [theme.breakpoints.up("sm")]: {
     display: open ? "block" : "none",
   },
+  cursor: "pointer",
 }))
 
 const NavBar = () => {
   const [open, setOpen] = useState(false)
 
-  return <>
-    <AppBar position="fixed">
-      <StyledToolBar>
-        <Typography variant="h5">FLOW FEED</Typography>
+  return <AppBar position="fixed">
+    <StyledToolBar>
+      <Typography variant="h5">FLOW FEED</Typography>
 
-        <StyledSearchBox open={open}>
-          <Search sx={{ fontSize: "26px", cursor: "pointer" }} />
-          <StyledInput placeholder="Search..." />
-          <StyledCancelButton onClick={() => setOpen(false)} sx={{
-            fontSize: "26px",
-          }} />
-        </StyledSearchBox>
+      <StyledSearchBox open={open}>
+        <Search sx={{ fontSize: "26px", cursor: "pointer" }} />
+        <StyledInput placeholder="Search..." />
+        <StyledCancelButton onClick={() => setOpen(false)} sx={{
+          fontSize: "26px",
+        }} />
+      </StyledSearchBox>
 
-        <StyledIconBox open={open}>
-          <StyledSearchButton onClick={() => setOpen(true)} />
-          <Badge badgeContent={7} color="error" sx={{ cursor: "pointer" }}>
-            <Mail color="white" />
-          </Badge>
-          <Badge badgeContent={2} color="error" sx={{ cursor: "pointer" }}>
-            <Notifications color="white" />
-          </Badge>
-          <Avatar src={avatar} sx={{ width: 30, height: 30, marginLeft: 0.7, cursor: "pointer" }} />
-        </StyledIconBox>
-      </StyledToolBar>
-    </AppBar>
-  </>
+      <StyledIconBox open={open}>
+        <StyledSearchButton onClick={() => setOpen(true)} />
+        <Badge badgeContent={7} color="error" sx={{ cursor: "pointer" }}>
+          <Mail color="white" />
+        </Badge>
+        <Badge badgeContent={2} color="error" sx={{ cursor: "pointer" }}>
+          <Notifications color="white" />
+        </Badge>
+        <Avatar src={avatar} sx={{ width: 30, height: 30, marginLeft: 0.7, cursor: "pointer" }} />
+      </StyledIconBox>
+    </StyledToolBar>
+  </AppBar>
 }
 
 export default NavBar

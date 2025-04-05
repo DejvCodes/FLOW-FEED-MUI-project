@@ -21,7 +21,7 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.mode === "dark" ? "#E1E5EB" : "#444",
 }))
 
-const StyledLink = styled(Link)(({theme}) => ({
+const StyledLink = styled(Link)(({ theme }) => ({
   color: theme.palette.mode === "dark" ? "#E1E5EB" : "#444",
   fontSize: 16,
   marginRight: 14,
@@ -32,46 +32,43 @@ const StyledLink = styled(Link)(({theme}) => ({
 }))
 
 const RightBar = () => {
-  return <>
-    <StyledContainer>
-      <StyledTypography gutterBottom>
-        Online Friends
-      </StyledTypography>
+  return <StyledContainer>
+    <StyledTypography gutterBottom>
+      Online Friends
+    </StyledTypography>
 
-      <AvatarGroup total={6} sx={{ justifyContent: "flex-end", marginBottom: 2 }}>
-        {avatars.map((oneAvatar, index) => {
-          const { alt, img } = oneAvatar
-          return <Avatar key={index} alt={alt} src={img} />
-        })}
-      </AvatarGroup>
+    <AvatarGroup total={6} sx={{ justifyContent: "flex-end", marginBottom: 2 }}>
+      {avatars.map((oneAvatar, index) => {
+        const { alt, img } = oneAvatar
+        return <Avatar key={index} alt={alt} src={img} />
+      })}
+    </AvatarGroup>
 
-      <StyledTypography gutterBottom>
-        Gallery
-      </StyledTypography>
+    <StyledTypography gutterBottom>
+      Gallery
+    </StyledTypography>
 
-      <ImageList cols={3} sx={{ marginBottom: 2 }}>
-        {gallery.map((item, index) => (
-          <ImageListItem key={index}>
-            <img
-              src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-              alt={item.title}
-              loading="lazy"
-            />
-          </ImageListItem>
-        ))}
-      </ImageList>
+    <ImageList cols={3} sx={{ marginBottom: 2 }}>
+      {gallery.map((item, index) => (
+        <ImageListItem key={index}>
+          <img
+            src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
+            alt={item.title}
+            loading="lazy"
+          />
+        </ImageListItem>
+      ))}
+    </ImageList>
 
-      <StyledTypography gutterBottom>
-        Categories
-      </StyledTypography>
+    <StyledTypography gutterBottom>
+      Categories
+    </StyledTypography>
 
-      <StyledLink href="#" variant="body2">Sport</StyledLink>
-      <StyledLink href="#" variant="body2">Food</StyledLink>
-      <StyledLink href="#" variant="body2">Movie</StyledLink>
-      <StyledLink href="#" variant="body2">Science</StyledLink>
-    </StyledContainer>
-
-  </>
+    <StyledLink href="#" variant="body2">Sport</StyledLink>
+    <StyledLink href="#" variant="body2">Food</StyledLink>
+    <StyledLink href="#" variant="body2">Movie</StyledLink>
+    <StyledLink href="#" variant="body2">Science</StyledLink>
+  </StyledContainer>
 }
 
 export default RightBar

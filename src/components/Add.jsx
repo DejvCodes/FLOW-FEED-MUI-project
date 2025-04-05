@@ -1,4 +1,5 @@
-import { Alert, Box, Button, Container, Fab, FormControl, FormControlLabel, FormLabel, InputLabel, MenuItem, Modal, Radio, RadioGroup, Select, Snackbar, TextField, Tooltip } from "@mui/material"
+import { Alert, Box, Button, Container, Fab, FormControl, FormControlLabel, FormLabel, InputLabel } from "@mui/material"
+import { MenuItem, Modal, Radio, RadioGroup, Select, Snackbar, TextField, Tooltip } from "@mui/material"
 import AddIcon from '@mui/icons-material/Add'
 import { styled } from "@mui/system"
 import { useState } from "react"
@@ -35,18 +36,19 @@ const StyledItem = styled(Box)(({ theme }) => ({
 const Add = () => {
   const [open, setOpen] = useState(false)
   const [openAlert, setOpenAlert] = useState(false)
+  const [visibility, setVisibility] = useState("Public")
 
-  const handleOpen = () => {
+  const handleAlertOpen = () => {
     setOpenAlert(true)
   }
-  const handleClose = () => {
+  const handleAlertClose = () => {
     setOpenAlert(false)
   }
 
   return <>
     <Tooltip title="Add" aria-label="add" onClick={() => setOpen(true)}>
       <StyledFab>
-        <AddIcon></AddIcon>
+        <AddIcon />
       </StyledFab>
     </Tooltip>
 
@@ -79,6 +81,8 @@ const Add = () => {
           <FormControl variant="standard" sx={{ marginBottom: 2, minWidth: 100 }}>
             <InputLabel id="demo-simple-select-standard-label">Public</InputLabel>
             <Select
+              value={visibility}
+              onChange={(e) => setVisibility(e.target.value)}
               labelId="demo-simple-select-standard-label"
               id="demo-simple-select-standard"
               label="Public"
@@ -90,7 +94,7 @@ const Add = () => {
           </FormControl>
 
           <StyledItem>
-            <FormLabel components="legend">Who can comment?</FormLabel>
+            <FormLabel component="legend">Who can comment?</FormLabel>
             <RadioGroup>
               <FormControlLabel
                 value="Everybody"
@@ -121,7 +125,7 @@ const Add = () => {
               variant="outlined"
               color="primary"
               sx={{ marginRight: 2 }}
-              onClick={handleOpen}
+              onClick={handleAlertOpen}
             >
               Create
             </Button>
@@ -138,9 +142,9 @@ const Add = () => {
     </Modal>
 
 
-    <Snackbar open={openAlert} autoHideDuration={6000} onClose={handleClose}>
+    <Snackbar open={openAlert} autoHideDuration={6000} onClose={handleAlertClose}>
       <Alert
-        onClose={handleClose}
+        onClose={handleAlertClose}
         severity="success"
         variant="filled"
         sx={{ width: '100%' }}

@@ -11,13 +11,11 @@ const StyledContainer = styled(Container)(({ theme }) => ({
 }))
 
 const Feed = () => {
-  return <>
-    <StyledContainer>
-      {posts.map((onePost, index) => {
-        return <Post key={index} {...onePost} />
-      })}
-    </StyledContainer>
-  </>
+  return <StyledContainer>
+    {posts.map((onePost, index) => {
+      return <Post key={index} {...onePost} />
+    })}
+  </StyledContainer>
 }
 
 export default Feed

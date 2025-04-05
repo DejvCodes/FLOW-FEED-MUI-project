@@ -10,7 +10,7 @@ const StyledContainer = styled(Container)(({ theme }) => ({
   position: "sticky",
   top: 0,
   color: theme.palette.mode === "dark" ? "#E1E5EB" : "#444",
-  backgroundColor: "none",
+  backgroundColor: "transparent",
   borderRight: theme.palette.mode === "dark" ? "2px solid rgba(61, 61, 61, 0.7)" : "2px solid rgba(236, 231, 231, 0.7)",
   paddingTop: 95,
   [theme.breakpoints.down("sm")]: {
@@ -56,23 +56,21 @@ const StyledText = styled(Typography)(({ theme }) => ({
 const LeftBar = () => {
   const { darkMode, setDarkMode } = useContext(DarkModeContext)
 
-  return <>
-    <StyledContainer>
-      {menuItems.map((oneItem, index) => {
-        const { icon, text } = oneItem
-        return <StyledItem key={index}>
-          <StyledIcon as={icon} />
-          <StyledText>{text}</StyledText>
-        </StyledItem>
-      })}
-
-      <StyledItem onClick={() => setDarkMode(!darkMode)}>
-        {/* DarkMode Button */}
-        <StyledIcon sx={{ display: "flex" }}>{darkMode ? <LightMode /> : <DarkMode />}</StyledIcon>
-        <StyledText>{darkMode ? "Light" : "Dark"}</StyledText>
+  return <StyledContainer>
+    {menuItems.map((oneItem, index) => {
+      const { icon, text } = oneItem
+      return <StyledItem key={index}>
+        <StyledIcon as={icon} />
+        <StyledText>{text}</StyledText>
       </StyledItem>
-    </StyledContainer>
-  </>
+    })}
+
+    <StyledItem onClick={() => setDarkMode(!darkMode)}>
+      {/* DarkMode Button */}
+      <StyledIcon sx={{ display: "flex" }}>{darkMode ? <LightMode /> : <DarkMode />}</StyledIcon>
+      <StyledText>{darkMode ? "Light" : "Dark"}</StyledText>
+    </StyledItem>
+  </StyledContainer>
 }
 
 export default LeftBar
