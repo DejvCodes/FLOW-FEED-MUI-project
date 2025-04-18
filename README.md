@@ -10,5 +10,5 @@ Flow Feed is a social media platform that allows users to share posts and engage
 ## 🌐 Link
 <a href="https://flow-feed-dejvcodes.netlify.app/">FLOW FEED</a>
  
-## 🔐 License 
+## 🔐 License
 [MIT License](LICENSE) 
