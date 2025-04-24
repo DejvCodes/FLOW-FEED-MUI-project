@@ -7,7 +7,7 @@ Flow Feed is a social media platform that allows users to share posts and engage
 ## 💻 Tech Stack
 [![My Skills](https://skillicons.dev/icons?i=javascript,materialui)](https://skillicons.dev)
 
-## 🌐 Link
+## 🌐 Live Demo
 <a href="https://flow-feed-dejvcodes.netlify.app/">FLOW FEED</a>
  
 ## 🔐 License 
